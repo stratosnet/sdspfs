@@ -3,9 +3,10 @@ services:
   ipfs:
     build:
       context: .
-      # args:
-      #   - IPFS_PLUGINS=sdspfs.so
-    entrypoint: tail -f /dev/null
+      args:
+        - PLUGIN_BINARY=sdspfs.so
+    # NOTE: For debug
+    # entrypoint: tail -f /dev/null
     volumes:
       - ipfs_volume:/data/ipfs
       - ipfs_fuse:/ipfs
@@ -13,8 +14,8 @@ services:
     ports:
       - "0.0.0.0:4001:4001"
       - "0.0.0.0:4001:4001/udp"
-      - "127.0.0.1:8080:8080"
-      - "127.0.0.1:5001:5001"
+      - "8080:8080"
+      - "5001:5001"
     logging:
       driver: "json-file"
       options:
