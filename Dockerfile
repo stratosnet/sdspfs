@@ -50,6 +50,8 @@ ENV PLUGIN_PATH /plugin/$PLUGIN_BINARY
 
 RUN mkdir -p $IPFS_PATH/plugins
 
+RUN rm $IPFS_PATH/plugins/$PLUGIN_BINARY || :
+
 COPY --from=builder --chown=root:root /usr/lib/x86_64-linux-gnu/libdl.so.2 /lib/libdl.so.2
 
 COPY --from=plugin --chown=ipfs:users $PLUGIN_PATH $IPFS_PATH/plugins/$PLUGIN_BINARY

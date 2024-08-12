@@ -5,7 +5,7 @@ import (
 	"github.com/ipfs/kubo/core"
 	"github.com/ipfs/kubo/plugin"
 
-	// "github.com/stratosnet/sdspfs/provider"
+	"github.com/stratosnet/sdspfs/provider"
 	"go.uber.org/fx"
 )
 
@@ -39,7 +39,7 @@ func (p *sdsPlugin) Options(info core.FXNodeInfo) ([]fx.Option, error) {
 
 	opts := append(
 		info.FXOptions,
-		// fx.Decorate(provider.WrapProvider),
+		fx.Decorate(provider.WrapProvider),
 	)
 	return opts, nil
 }

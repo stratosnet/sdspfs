@@ -3,11 +3,21 @@ package main
 import (
 	"errors"
 	"fmt"
+	"net"
 	"plugin"
 	"testing"
 
 	iplugin "github.com/ipfs/kubo/plugin"
 )
+
+func TestDns(t *testing.T) {
+	ipList, err := net.LookupIP("8.tcp.eu.ngrok.io")
+	if err != nil {
+		return
+	}
+	fmt.Println(ipList)
+	panic(fmt.Errorf("test"))
+}
 
 // TestPluginLoad smoke tsting if plugin successfully compiled and work on current OS
 func TestPluginLoad(t *testing.T) {
