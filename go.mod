@@ -8,17 +8,19 @@ require (
 	github.com/ipfs/go-ipld-format v0.6.0
 	github.com/ipfs/go-log/v2 v2.5.1
 	github.com/ipfs/kubo v0.29.0
+	github.com/multiformats/go-multibase v0.2.0
+	github.com/multiformats/go-multihash v0.2.3
 	github.com/stratosnet/sds v0.12.2
-	github.com/stratosnet/sds/framework v0.0.0-20240730230828-b83f36b54f4b
-	github.com/stratosnet/sds/sds-msg v0.0.0-20240628130422-4448d6147364
+	github.com/stratosnet/sds/framework v0.0.0-20240805163911-9ff97261a419
+	github.com/stratosnet/sds/sds-msg v0.0.0-20240805163911-9ff97261a419
 	github.com/stretchr/testify v1.9.0
 	go.uber.org/fx v1.21.1
 )
 
 require (
 	bazil.org/fuse v0.0.0-20200117225306-7b5117fecadc // indirect
-	cosmossdk.io/api v0.7.5 // indirect
-	cosmossdk.io/math v1.3.0 // indirect
+	cosmossdk.io/api v0.7.2 // indirect
+	cosmossdk.io/math v1.2.0 // indirect
 	filippo.io/edwards25519 v1.0.0 // indirect
 	github.com/HuKeping/rbtree v0.0.0-20210106022122-8ad34838eb2b // indirect
 	github.com/Jorropo/jsync v1.0.1 // indirect
@@ -38,16 +40,15 @@ require (
 	github.com/containerd/cgroups v1.1.0 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
 	github.com/cosmos/btcutil v1.0.5 // indirect
-	github.com/cosmos/cosmos-proto v1.0.0-beta.5 // indirect
+	github.com/cosmos/cosmos-proto v1.0.0-beta.3 // indirect
 	github.com/cosmos/go-bip39 v1.0.0 // indirect
-	github.com/cosmos/gogoproto v1.5.0 // indirect
+	github.com/cosmos/gogoproto v1.4.11 // indirect
 	github.com/crackcomm/go-gitignore v0.0.0-20231225121904-e25f5bc08668 // indirect
 	github.com/cskr/pubsub v1.0.2 // indirect
-	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
+	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/davidlazar/go-crypto v0.0.0-20200604182044-b73af7476f6c // indirect
 	github.com/deckarep/golang-set v1.8.0 // indirect
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.3.0 // indirect
-	github.com/dgraph-io/ristretto v0.1.1 // indirect
 	github.com/docker/go-units v0.5.0 // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/elastic/gosigar v0.14.2 // indirect
@@ -55,7 +56,6 @@ require (
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/flynn/noise v1.1.0 // indirect
 	github.com/francoispqt/gojay v1.2.13 // indirect
-	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/glendc/go-external-ip v0.1.0 // indirect
 	github.com/go-logr/logr v1.4.1 // indirect
@@ -143,9 +143,7 @@ require (
 	github.com/multiformats/go-multiaddr v0.12.4 // indirect
 	github.com/multiformats/go-multiaddr-dns v0.3.1 // indirect
 	github.com/multiformats/go-multiaddr-fmt v0.1.0 // indirect
-	github.com/multiformats/go-multibase v0.2.0 // indirect
 	github.com/multiformats/go-multicodec v0.9.0 // indirect
-	github.com/multiformats/go-multihash v0.2.3 // indirect
 	github.com/multiformats/go-multistream v0.5.0 // indirect
 	github.com/multiformats/go-varint v0.0.7 // indirect
 	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646 // indirect
@@ -156,7 +154,7 @@ require (
 	github.com/pbnjay/memory v0.0.0-20210728143218-7b4eea64cf58 // indirect
 	github.com/pborman/uuid v1.2.1 // indirect
 	github.com/pelletier/go-toml v1.9.5 // indirect
-	github.com/pelletier/go-toml/v2 v2.1.0 // indirect
+	github.com/pelletier/go-toml/v2 v2.0.8 // indirect
 	github.com/petar/GoLLRB v0.0.0-20210522233825-ae3b015fd3e9 // indirect
 	github.com/peterh/liner v1.2.1 // indirect
 	github.com/pion/datachannel v1.5.6 // indirect
@@ -176,7 +174,7 @@ require (
 	github.com/pion/turn/v2 v2.1.6 // indirect
 	github.com/pion/webrtc/v3 v3.2.40 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
+	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/polydawn/refmt v0.89.0 // indirect
 	github.com/power-devops/perfstat v0.0.0-20210106213030-5aafc221ea8c // indirect
 	github.com/prometheus/client_golang v1.19.1 // indirect
@@ -195,7 +193,6 @@ require (
 	github.com/spaolacci/murmur3 v1.1.0 // indirect
 	github.com/stratosnet/sds/tx-client v0.0.0-20240725194703-e4a8b75b91f5 // indirect
 	github.com/stratosnet/stratos-chain/api v0.0.0-20240509211914-ee516857645d // indirect
-	github.com/syndtr/goleveldb v1.0.1-0.20220721030215-126854af5e6d // indirect
 	github.com/tklauser/go-sysconf v0.3.12 // indirect
 	github.com/tklauser/numcpus v0.6.1 // indirect
 	github.com/tyler-smith/go-bip39 v1.1.0 // indirect

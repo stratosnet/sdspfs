@@ -16,6 +16,7 @@ GOFLAGS += -trimpath
 FORCE:
 
 sdspfs.so: go.mod
+	rm "$@" || true
 	CGO_ENABLED=1 $(GOCC) build $(GOFLAGS) -buildmode=plugin -o "$@"
 	chmod +x "$@"
 

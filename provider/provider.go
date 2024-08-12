@@ -13,7 +13,6 @@ import (
 	ipld "github.com/ipfs/go-ipld-format"
 	logging "github.com/ipfs/go-log/v2"
 	iface "github.com/ipfs/kubo/core/coreiface"
-	"github.com/sdspfs/rpc"
 )
 
 var logger = logging.Logger("sdspdf")
@@ -24,7 +23,6 @@ type ppProvider struct {
 	ctx      context.Context
 	provider provider.System
 	dag      ipld.DAGService
-	rpc      *rpc.Rpc
 }
 
 // WrapResolver wraps the given path Resolver with a content-blocking layer
@@ -33,13 +31,10 @@ func WrapProvider(provider provider.System, dag ipld.DAGService) provider.System
 	logger.Debugf("Path resolved wrapped with pp provider")
 	fmt.Println("provider", provider)
 	fmt.Println("dag", dag)
-	// TODO: Add config
-	rpc, _ := rpc.NewRpc("https://sds-gateway.thestratos.org/private/rpc/sjwRNkqXQ0MI5bPXjTs2Q2vXheA")
 	return &ppProvider{
 		ctx:      context.Background(),
 		provider: provider,
 		dag:      dag,
-		rpc:      rpc,
 	}
 }
 
@@ -87,13 +82,6 @@ func (pp *ppProvider) Provide(cid cid.Cid) error {
 	}
 
 	fmt.Println("SDS PP PROVIDER: file bytes", b)
-
-	oz, err := pp.rpc.GetOzone()
-	fmt.Println("oz", oz)
-	fmt.Println("err", err)
-	if err != nil {
-		return err
-	}
 
 	return nil
 }
