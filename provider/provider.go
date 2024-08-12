@@ -2,7 +2,6 @@ package provider
 
 import (
 	"context"
-	"fmt"
 	"io"
 
 	"github.com/ipfs/boxo/files"
@@ -15,7 +14,7 @@ import (
 	iface "github.com/ipfs/kubo/core/coreiface"
 )
 
-var logger = logging.Logger("sdspdf")
+var logger = logging.Logger("sdspfs")
 var _ provider.System = (*ppProvider)(nil)
 
 // ppProvider implements a provider path to the pp network.
@@ -29,8 +28,8 @@ type ppProvider struct {
 // for Resolve operations.
 func WrapProvider(provider provider.System, dag ipld.DAGService) provider.System {
 	logger.Debugf("Path resolved wrapped with pp provider")
-	fmt.Println("provider", provider)
-	fmt.Println("dag", dag)
+	logger.Debugf("provider", provider)
+	logger.Debugf("dag", dag)
 	return &ppProvider{
 		ctx:      context.Background(),
 		provider: provider,
@@ -39,12 +38,12 @@ func WrapProvider(provider provider.System, dag ipld.DAGService) provider.System
 }
 
 func (pp *ppProvider) Close() error {
-	fmt.Println("SDS PP PROVIDER: CLOSE")
+	logger.Debugf("SDS PP PROVIDER: CLOSE")
 	return pp.provider.Close()
 }
 
 func (pp *ppProvider) Provide(cid cid.Cid) error {
-	fmt.Println("SDS PP PROVIDER: PROVIDE", cid)
+	logger.Debugf("SDS PP PROVIDER: PROVIDE", cid)
 	err := pp.provider.Provide(cid)
 	if err != nil {
 		return err
@@ -52,19 +51,19 @@ func (pp *ppProvider) Provide(cid cid.Cid) error {
 
 	p := path.FromCid(cid)
 
-	fmt.Println("SDS PP PROVIDER: path p.String()", p.String())
+	logger.Debugf("SDS PP PROVIDER: path p.String()", p.String())
 
 	nd, err := pp.dag.Get(pp.ctx, cid)
 	if err != nil {
 		return err
 	}
-	fmt.Println("SDS PP PROVIDER: node nd.RawData()", nd.RawData())
+	logger.Debugf("SDS PP PROVIDER: node nd.RawData()", nd.RawData())
 
 	f, err := unixfile.NewUnixfsFile(pp.ctx, pp.dag, nd)
 	if err != nil {
 		return err
 	}
-	fmt.Println("SDS PP PROVIDER: ufx file", f)
+	logger.Debugf("SDS PP PROVIDER: ufx file", f)
 
 	var file files.File
 	switch f := f.(type) {
@@ -81,17 +80,17 @@ func (pp *ppProvider) Provide(cid cid.Cid) error {
 		return err
 	}
 
-	fmt.Println("SDS PP PROVIDER: file bytes", b)
+	logger.Debugf("SDS PP PROVIDER: file bytes", b)
 
 	return nil
 }
 
 func (pp *ppProvider) Reprovide(ctx context.Context) error {
-	fmt.Println("SDS PP PROVIDER: REPROVIDE", ctx)
+	logger.Debugf("SDS PP PROVIDER: REPROVIDE", ctx)
 	return pp.provider.Reprovide(ctx)
 }
 
 func (pp *ppProvider) Stat() (provider.ReproviderStats, error) {
-	fmt.Println("SDS PP PROVIDER: STAT")
+	logger.Debugf("SDS PP PROVIDER: STAT")
 	return pp.provider.Stat()
 }

@@ -5,6 +5,7 @@ import (
 	"github.com/ipfs/kubo/core"
 	"github.com/ipfs/kubo/plugin"
 
+	"github.com/stratosnet/sdspfs/dag"
 	"github.com/stratosnet/sdspfs/provider"
 	"go.uber.org/fx"
 )
@@ -34,11 +35,12 @@ func (p *sdsPlugin) Init(env *plugin.Environment) error {
 }
 
 func (p *sdsPlugin) Options(info core.FXNodeInfo) ([]fx.Option, error) {
-	logging.SetLogLevel("sdspfs", "INFO")
+	logging.SetLogLevel("sdspfs", "DEBUG")
 	logger.Info("Loading Sds plugin: another brand new ds")
 
 	opts := append(
 		info.FXOptions,
+		fx.Decorate(dag.WrapDag),
 		fx.Decorate(provider.WrapProvider),
 	)
 	return opts, nil
